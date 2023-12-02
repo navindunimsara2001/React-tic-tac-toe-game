@@ -52,6 +52,7 @@ export const TicTacToe = () => {
     }
   };
 
+  // winner action
   const won = (winner) => {
     setLock(true); // data can not be modify after win
     if (winner === "x") {
@@ -61,6 +62,15 @@ export const TicTacToe = () => {
     }
     console.log(winner);
   };
+
+  // reset button
+  const reset = () => {
+    setLock(false); // unlock toggle
+    data = ["", "", "", "", "", "", "", "", ""]; // reset array
+    titleRef.current.innerHTML = `Tic Tac Toe Game In <span>React</span>`;
+    window.location.reload(false);
+  };
+
   return (
     <div className="container">
       <h1 className="title" ref={titleRef}>
@@ -128,7 +138,14 @@ export const TicTacToe = () => {
           ></div>
         </div>
       </div>
-      <button className="reset">Reset</button>
+      <button
+        className="reset"
+        onClick={() => {
+          reset();
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 };
